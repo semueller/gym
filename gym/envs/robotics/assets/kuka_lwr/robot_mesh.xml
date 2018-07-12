@@ -1,0 +1,59 @@
+<mujoco model="single_lwr_robot">
+    <compiler angle="radian" />
+    <size njmax="500" nconmax="100" />
+    <worldbody>
+        <body name="box" pos="0 0 0">
+            <inertial pos="0 0 0" mass="5" diaginertia="0.01 0.01 0.01" />
+            <geom size="0.5 0.5 0.5" pos="0 0 0.5" type="box" />
+            <body name="lwr_base_link" pos="0 0 1">
+                <inertial pos="0 0 0.055" quat="0.707107 0.707107 0 0" mass="2" diaginertia="0.00381667 0.00381667 0.0036" />
+                <geom size="0.07 0.055" type="mesh" mesh="base_mesh" rgba="1 0.487 0 1" />
+                <body name="lwr_1_link" pos="0 0 0.11">
+                    <inertial pos="0 -0.06 0.13" quat="0.707107 0.707107 0 0" mass="2.35" diaginertia="0.0160583 0.0139433 0.003525" />
+                    <joint name="lwr_a1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2.96706 2.96706" />
+                    <geom size="0.07" rgba="1 0.487 0 1" />
+                    <geom size="0.07" pos="0 0.06 0.2" rgba="1 0.487 0 1" />
+                    <geom size="0.07 0.104" type="mesh"  mesh="link1_mesh" rgba="1 0.487 0 1" />
+                    <body name="lwr_2_link" pos="0 0 0.2005">
+                        <inertial pos="0 0.06 0.07" quat="0.707107 0.707107 0 0" mass="2.35" diaginertia="0.0160583 0.0139433 0.003525" />
+                        <joint name="lwr_a2_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2.0944 2.0944" />
+                        <geom size="0.07" pos="0 0 0.2" rgba="1 0.487 0 1" />
+                        <geom size="0.07" pos="0 -0.06 0" rgba="1 0.487 0 1" />
+                        <geom size="0.07 0.104" type="mesh" mesh="link2_mesh" rgba="1 0.487 0 1" />
+                        <body name="lwr_3_link" pos="0 0 0.2">
+                            <inertial pos="0 0.06 0.13" quat="0.707107 0.707107 0 0" mass="2.35" diaginertia="0.0160583 0.0139433 0.003525" />
+                            <joint name="lwr_e1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2.96706 2.96706" />
+                            <geom size="0.07" rgba="1 0.487 0 1" />
+                            <geom size="0.07" pos="0 -0.06 0.2" rgba="1 0.487 0 1" />
+                            <geom size="0.07 0.104" type="mesh" mesh="link3_mesh" rgba="1 0.487 0 1" />
+                            <body name="lwr_4_link" pos="0 0 0.2">
+                                <inertial pos="0 -0.06 0.07" quat="0.707107 0.707107 0 0" mass="2.35" diaginertia="0.0160583 0.0139433 0.003525" />
+                                <joint name="lwr_a3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-2.0944 2.0944" />
+                                <geom size="0.07" pos="0 0 0.2" rgba="1 0.487 0 1" />
+                                <geom size="0.07" pos="0 0.06 0" rgba="1 0.487 0 1" />
+                                <geom size="0.07 0.104" type="mesh" mesh="link4_mesh" rgba="1 0.487 0 1" />
+                                <body name="lwr_5_link" pos="0 0 0.2">
+                                    <inertial pos="0 0 0.124" quat="0.707107 0.707107 0 0" mass="2.35" diaginertia="0.0148645 0.0127495 0.003525" />
+                                    <joint name="lwr_a4_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2.96706 2.96706" />
+                                    <geom size="0.07" rgba="1 0.487 0 1" />
+                                    <geom size="0.07" pos="0 0.04 0.19" rgba="1 0.487 0 1" />
+                                    <geom size="0.07 0.099" type="mesh" mesh="link5_mesh" rgba="1 0.487 0 1" />
+                                    <body name="lwr_6_link" pos="0 0 0.19">
+                                        <inertial pos="0 0 0.0625" mass="1.1" diaginertia="0.00286458 0.00286458 0.00286458" />
+                                        <joint name="lwr_a5_joint" pos="0 0 0" axis="0 -1 0" limited="true" range="-2.0944 2.0944" />
+                                        <geom size="0.08" type="mesh" mesh="link6_mesh"  rgba="0.7 0.7 0.7 1" />
+                                        <body name="lwr_7_link" pos="0 0 0.078">
+                                            <inertial pos="0 0 0" mass="0.25" diaginertia="0.000416667 0.000416667 0.000416667" />
+                                            <joint name="lwr_a6_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2.96706 2.96706" />
+                                            <geom size="0.04 0.025" type="mesh" mesh="link7_mesh"  rgba="0.3 0.3 0.3 1" />
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

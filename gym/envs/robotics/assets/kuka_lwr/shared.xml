@@ -1,0 +1,27 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujoco>
+    <size njmax="500" nconmax="100" nuser_jnt="1" nuser_site="1" nuser_tendon="1" nuser_sensor="1" nuser_actuator="16" nstack="600000"></size>
+    <compiler angle="radian" coordinate="local" meshdir="../stls/kuka_lwr" ></compiler>
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.44 0.85 0.56" rgb2="0.46 0.87 0.58" width="32" height="32"></texture>
+        <material name="floor_mat" specular="0" shininess="0.5" reflectance="0" rgba="0.2 0.2 0.2 0"></material>
+
+        <mesh name="base_mesh" file="base.STL"></mesh>
+
+        <mesh name="link1_mesh" file="link_1.STL"></mesh>
+        <mesh name="link2_mesh" file="link_2.STL"></mesh>
+        <mesh name="link3_mesh" file="link_3.STL"></mesh>
+        <mesh name="link4_mesh" file="link_4.STL"></mesh>
+        <mesh name="link5_mesh" file="link_5.STL"></mesh>
+        <mesh name="link6_mesh" file="link_6.STL"></mesh>
+        <mesh name="link7_mesh" file="link_7.STL"></mesh>
+
+    </asset>
+
+    <visual>
+        <map fogstart="3" fogend="5" force="0.1"></map>
+        <quality shadowsize="4096"></quality>
+    </visual>
+
+</mujoco>
