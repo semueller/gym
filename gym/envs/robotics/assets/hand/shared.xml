@@ -198,6 +198,7 @@
     </tendon>
 
     <sensor>
+        <!--joint position sensors-->
         <jointpos name="robot0:Sjp_WRJ1" joint="robot0:WRJ1"></jointpos>
         <jointpos name="robot0:Sjp_WRJ0" joint="robot0:WRJ0"></jointpos>
         <jointpos name="robot0:Sjp_FFJ3" joint="robot0:FFJ3"></jointpos>
@@ -222,11 +223,44 @@
         <jointpos name="robot0:Sjp_THJ2" joint="robot0:THJ2"></jointpos>
         <jointpos name="robot0:Sjp_THJ1" joint="robot0:THJ1"></jointpos>
         <jointpos name="robot0:Sjp_THJ0" joint="robot0:THJ0"></jointpos>
+
+        <!--default touch sensors in fingertips-->
         <touch name="robot0:ST_Tch_fftip" site="robot0:Tch_fftip"></touch>
         <touch name="robot0:ST_Tch_mftip" site="robot0:Tch_mftip"></touch>
         <touch name="robot0:ST_Tch_rftip" site="robot0:Tch_rftip"></touch>
         <touch name="robot0:ST_Tch_lftip" site="robot0:Tch_lftip"></touch>
         <touch name="robot0:ST_Tch_thtip" site="robot0:Tch_thtip"></touch>
+
+        <!--self defined touch sensors-->
+
+        <!--THUMB-->
+        <touch name="robot0:TS_thtip" site="robot0:T_thtip"></touch>
+        <touch name="robot0:TS_thmiddle" site="robot0:T_thmiddle"></touch>
+        <touch name="robot0:TS_thproximal" site="robot0:T_thproximal"></touch>
+
+        <!-- LEFT FINGER -->
+        <touch name="robot0:TS_lftip" site="robot0:T_lftip"></touch>
+        <touch name="robot0:TS_lfmiddle" site="robot0:T_lfmiddle"></touch>
+        <touch name="robot0:TS_lfproximal" site="robot0:T_lfproximal"></touch>
+
+        <!-- RIGHT FINGER -->
+        <touch name="robot0:TS_rftip" site="robot0:T_rftip"></touch>
+        <touch name="robot0:TS_rfmiddle" site="robot0:T_rfmiddle"></touch>
+        <touch name="robot0:TS_rfproximal" site="robot0:T_rfproximal"></touch>
+
+        <!-- MIDDLE FINGER -->
+        <touch name="robot0:TS_mftip" site="robot0:T_mftip"></touch>
+        <touch name="robot0:TS_mfmiddle" site="robot0:T_mfmiddle"></touch>
+        <touch name="robot0:TS_mfproximal" site="robot0:T_mfproximal"></touch>
+
+        <!-- FIFTH FINGER -->
+        <touch name="robot0:TS_fftip" site="robot0:T_fftip"></touch>
+        <touch name="robot0:TS_ffmiddle" site="robot0:T_ffmiddle"></touch>
+        <touch name="robot0:TS_ffproximal" site="robot0:T_ffproximal"></touch>
+
+        <!--PALM-->
+        <touch name="robot0:TS_palm" site="robot0:T_palm"></touch>
+
     </sensor>
 
     <actuator>

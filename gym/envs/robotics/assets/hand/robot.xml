@@ -17,6 +17,7 @@
                     <geom class="robot0:D_Vizual" name="robot0:V_palm" mesh="robot0:palm"></geom>
                     <geom class="robot0:DC_Hand" name="robot0:C_palm0" type="box" pos="0.011 0 0.038" size="0.032 0.0111 0.049" rgba="0.4 0.5 0.6 0.1"></geom>
                     <geom class="robot0:DC_Hand" name="robot0:C_palm1" type="box" pos="-0.032 0 0.014" size="0.011 0.0111 0.025" rgba="0.4 0.5 0.6 0.1"></geom>
+                    <site name="robot0:T_palm" type="box" pos="0 -0.01 0.04" size=".037 .01 .03" rgba="0.2 .9 .8 1"/>
                     <body name="robot0:ffknuckle" pos="0.033 0 0.095">
                         <inertial pos="0 0 0" quat="0.52 0.854 0.006 -0.003" mass="0.008" diaginertia="1e-05 1e-05 1e-05"></inertial>
                         <joint name="robot0:FFJ3" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.349 0.349" user="1103"></joint>
@@ -26,11 +27,13 @@
                             <joint name="robot0:FFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1102"></joint>
                             <geom class="robot0:D_Vizual" name="robot0:V_ffproximal" mesh="robot0:F3"></geom>
                             <geom class="robot0:DC_Hand" name="robot0:C_ffproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                            <site name="robot0:T_ffproximal" type="ellipsoid" pos="0 -0.003 0.02" size=".008 .01 .02" rgba=".9 .9 .1 1"/>
                             <body name="robot0:ffmiddle" pos="0 0 0.045">
                                 <inertial pos="0 0 0.011" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                 <joint name="robot0:FFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1101"></joint>
                                 <geom class="robot0:D_Vizual" name="robot0:V_ffmiddle" mesh="robot0:F2"></geom>
                                 <geom class="robot0:DC_Hand" name="robot0:C_ffmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                <site name="robot0:T_ffmiddle" type="ellipsoid" pos="0 -0.003 0.01" size=".008 .008 .013" rgba=".9 .9 .1 1"/>
                                 <body name="robot0:ffdistal" pos="0 0 0.025">
                                     <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                     <joint name="robot0:FFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1100"></joint>
@@ -38,6 +41,7 @@
                                     <geom class="robot0:DC_Hand" name="robot0:C_ffdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
                                     <site name="robot0:S_fftip" pos="0 0 0.026" group="3"></site>
                                     <site class="robot0:D_Touch" name="robot0:Tch_fftip"></site>
+                                    <site name="robot0:T_fftip" type="ellipsoid" pos="0 -0.002 0.015" size=".008 .008 .015" rgba=".9 .9 .1 1"/>
                                 </body>
                             </body>
                         </body>
@@ -51,11 +55,13 @@
                             <joint name="robot0:MFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1106"></joint>
                             <geom class="robot0:D_Vizual" name="robot0:V_mfproximal" mesh="robot0:F3"></geom>
                             <geom class="robot0:DC_Hand" name="robot0:C_mfproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                            <site name="robot0:T_mfproximal" type="ellipsoid" pos="0 -0.003 0.02" size=".008 .01 .02" rgba=".1 .9 .1 1"/>
                             <body name="robot0:mfmiddle" pos="0 0 0.045">
                                 <inertial pos="0 0 0.012" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                 <joint name="robot0:MFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1105"></joint>
                                 <geom class="robot0:D_Vizual" name="robot0:V_mfmiddle" mesh="robot0:F2"></geom>
                                 <geom class="robot0:DC_Hand" name="robot0:C_mfmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                <site name="robot0:T_mfmiddle" type="ellipsoid" pos="0 -0.003 0.01" size=".008 .008 .013" rgba=".1 .9 .1 1"/>
                                 <body name="robot0:mfdistal" pos="0 0 0.025">
                                     <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                     <joint name="robot0:MFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1104"></joint>
@@ -63,6 +69,7 @@
                                     <geom class="robot0:DC_Hand" name="robot0:C_mfdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
                                     <site name="robot0:S_mftip" pos="0 0 0.026" group="3"></site>
                                     <site class="robot0:D_Touch" name="robot0:Tch_mftip"></site>
+                                    <site name="robot0:T_mftip" type="ellipsoid" pos="0 -0.002 0.015" size=".008 .008 .015" rgba=".1 .9 .1 1"/>
                                 </body>
                             </body>
                         </body>
@@ -76,11 +83,13 @@
                             <joint name="robot0:RFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1110"></joint>
                             <geom class="robot0:D_Vizual" name="robot0:V_rfproximal" mesh="robot0:F3"></geom>
                             <geom class="robot0:DC_Hand" name="robot0:C_rfproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                            <site name="robot0:T_rfproximal" type="ellipsoid" pos="0 -0.003 0.02" size=".008 .01 .02" rgba=".9 .1 .1 1"/>
                             <body name="robot0:rfmiddle" pos="0 0 0.045">
                                 <inertial pos="0 0 0.012" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                 <joint name="robot0:RFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1109"></joint>
                                 <geom class="robot0:D_Vizual" name="robot0:V_rfmiddle" mesh="robot0:F2"></geom>
                                 <geom class="robot0:DC_Hand" name="robot0:C_rfmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                <site name="robot0:T_rfmiddle" type="ellipsoid" pos="0 -0.003 0.01" size=".008 .008 .013" rgba=".9 .1 .1 1"/>
                                 <body name="robot0:rfdistal" pos="0 0 0.025">
                                     <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                     <joint name="robot0:RFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1108"></joint>
@@ -88,6 +97,7 @@
                                     <geom class="robot0:DC_Hand" name="robot0:C_rfdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
                                     <site name="robot0:S_rftip" pos="0 0 0.026" group="3"></site>
                                     <site class="robot0:D_Touch" name="robot0:Tch_rftip"></site>
+                                    <site name="robot0:T_rftip" type="ellipsoid" pos="0 -0.002 0.015" size=".008 .008 .015" rgba=".9 .1 .1 1"/>
                                 </body>
                             </body>
                         </body>
@@ -106,11 +116,13 @@
                                 <joint name="robot0:LFJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1114"></joint>
                                 <geom class="robot0:D_Vizual" name="robot0:V_lfproximal" mesh="robot0:F3"></geom>
                                 <geom class="robot0:DC_Hand" name="robot0:C_lfproximal" type="capsule" pos="0 0 0.0225" size="0.01 0.0225"></geom>
+                                <site name="robot0:T_lfproximal" type="ellipsoid" pos="0 -0.003 0.02" size=".008 .01 .02" rgba=".1 .1 .9 1"/>
                                 <body name="robot0:lfmiddle" pos="0 0 0.045">
                                     <inertial pos="0 0 0.012" quat="0.707 0 0 0.707" mass="0.012" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                     <joint name="robot0:LFJ1" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1113"></joint>
                                     <geom class="robot0:D_Vizual" name="robot0:V_lfmiddle" mesh="robot0:F2"></geom>
                                     <geom class="robot0:DC_Hand" name="robot0:C_lfmiddle" type="capsule" pos="0 0 0.0125" size="0.00805 0.0125"></geom>
+                                    <site name="robot0:T_lfmiddle" type="ellipsoid" pos="0 -0.003 0.01" size=".008 .008 .013" rgba=".1 .1 .9 1"/>
                                     <body name="robot0:lfdistal" pos="0 0 0.025">
                                         <inertial pos="0 0 0.015" quat="0.707 -0.003 0.003 0.707" mass="0.01" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                         <joint name="robot0:LFJ0" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.571" user="1112"></joint>
@@ -118,6 +130,7 @@
                                         <geom class="robot0:DC_Hand" name="robot0:C_lfdistal" type="capsule" pos="0 0 0.012" size="0.00705 0.012" condim="4"></geom>
                                         <site name="robot0:S_lftip" pos="0 0 0.026" group="3"></site>
                                         <site class="robot0:D_Touch" name="robot0:Tch_lftip"></site>
+                                        <site name="robot0:T_lftip" type="ellipsoid" pos="0 -0.002 0.015" size=".008 .008 .015" rgba=".1 .1 .9 1"/>
                                     </body>
                                 </body>
                             </body>
@@ -132,6 +145,7 @@
                             <joint name="robot0:THJ3" type="hinge" pos="0 0 0" axis="1 0 0" range="0 1.222" user="1120"></joint>
                             <geom class="robot0:D_Vizual" name="robot0:V_thproximal" mesh="robot0:TH3_z"></geom>
                             <geom class="robot0:DC_Hand" name="robot0:C_thproximal" type="capsule" pos="0 0 0.019" size="0.013 0.019" rgba="0.4 0.5 0.6 0.1"></geom>
+                            <site name="robot0:T_thproximal" type="ellipsoid" pos="0 -0.003 0.025" size=".01 .01 .025" rgba=".9 .1 .9 1"/>
                             <body name="robot0:thhub" pos="0 0 0.038">
                                 <inertial pos="0 0 0" mass="0.002" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                 <joint name="robot0:THJ2" type="hinge" pos="0 0 0" axis="1 0 0" range="-0.209 0.209" user="1119"></joint>
@@ -141,6 +155,7 @@
                                     <joint name="robot0:THJ1" type="hinge" pos="0 0 0" axis="0 1 0" range="-0.524 0.524" user="1118"></joint>
                                     <geom class="robot0:D_Vizual" name="robot0:V_thmiddle" mesh="robot0:TH2_z"></geom>
                                     <geom class="robot0:DC_Hand" name="robot0:C_thmiddle" type="capsule" pos="0 0 0.016" size="0.011 0.016"></geom>
+                                    <site name="robot0:T_thmiddle" type="ellipsoid" pos="0 -0.0035 0.01" size=".01 .01 .022" rgba=".9 .1 .9 1"/>
                                     <body name="robot0:thdistal" pos="0 0 0.032">
                                         <inertial pos="0 0 0.016" quat="0.999 -0.005 -0.047 0.005" mass="0.016" diaginertia="1e-05 1e-05 1e-05"></inertial>
                                         <joint name="robot0:THJ0" type="hinge" pos="0 0 0" axis="0 1 0" range="-1.571 0" user="1117"></joint>
@@ -148,6 +163,7 @@
                                         <geom class="robot0:DC_Hand" name="robot0:C_thdistal" type="capsule" pos="0 0 0.013" size="0.00918 0.013" condim="4"></geom>
                                         <site name="robot0:S_thtip" pos="0 0 0.0275" group="3"></site>
                                         <site class="robot0:D_Touch" name="robot0:Tch_thtip" size="0.005 0.011 0.016" pos="-0.005 0 0.02"></site>
+                                        <site name="robot0:T_thtip" type="ellipsoid" pos="0 -0.002 0.015" size=".01 .01 .02" rgba=".9 .1 .9 1"/>
                                     </body>
                                 </body>
                             </body>
