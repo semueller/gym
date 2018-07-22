@@ -24,7 +24,7 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         target_position_range, reward_type, initial_qpos={},
         randomize_initial_position=True, randomize_initial_rotation=True,
         distance_threshold=0.01, rotation_threshold=0.1, n_substeps=20, relative_control=False,
-        ignore_z_target_rotation=False,
+        ignore_z_target_rotation=False
     ):
         """Initializes a new Hand manipulation environment.
 
@@ -61,6 +61,7 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         self.rotation_threshold = rotation_threshold
         self.reward_type = reward_type
         self.ignore_z_target_rotation = ignore_z_target_rotation
+        self.with_forces = False
 
         assert self.target_position in ['ignore', 'fixed', 'random']
         assert self.target_rotation in ['ignore', 'fixed', 'xyz', 'z', 'parallel']
@@ -256,12 +257,23 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         robot_qpos, robot_qvel = robot_get_obs(self.sim)
         object_qvel = self.sim.data.get_joint_qvel('object:joint')
         achieved_goal = self._get_achieved_goal().ravel()  # this contains the object position + rotation
-        observation = np.concatenate([robot_qpos, robot_qvel, object_qvel, achieved_goal])
+
+        if self.with_forces:
+            forces = [1 if x > 0 else 0 for x in self.sim.data.sensordata[-16:]]
+        else:
+            forces = []
+        print(forces)
+        observation = np.concatenate([robot_qpos, robot_qvel, forces, object_qvel, achieved_goal])
         return {
             'observation': observation.copy(),
             'achieved_goal': achieved_goal.copy(),
             'desired_goal': self.goal.ravel().copy(),
         }
+
+    def use_forces(self):
+        print(
+            'WARNING!!! This modified version of gym will include 16 force sensor values in the observation space!')
+        self.with_forces = True
 
 
 class HandBlockEnv(ManipulateEnv):
