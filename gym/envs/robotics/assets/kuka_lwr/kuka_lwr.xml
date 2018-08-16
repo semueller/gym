@@ -5,9 +5,24 @@
     <include file="robot_mesh.xml"></include>
 
     <actuator>
-        <position name="motor1" joint="lwr_a1_joint" ></position>
-        <position name="motor2" joint="lwr_a2_joint" ></position>
+        <position name="A1_M" joint="lwr_a1_joint" ctrlrange="-2.96705972839 2.96705972839" kp="5"></position>
+        <position name="A2_M" joint="lwr_a2_joint" ctrlrange="-2.09670597839 2.09670572839" kp="5"></position>
+        <position name="A3_M" joint="lwr_a3_joint" ctrlrange="-2.09670597239 2.09670592839" kp="5"></position>
+        <position name="A4_M" joint="lwr_a4_joint" ctrlrange="-2.96705972839 2.96705972839" kp="5"></position>
+        <position name="A5_M" joint="lwr_a5_joint" ctrlrange="-2.09670592839 2.09670592839" kp="5"></position>
+        <position name="A6_M" joint="lwr_a6_joint" ctrlrange="-2.96705972839 2.96705972839" kp="5"></position>
+        <position name="E1_M" joint="lwr_e1_joint" ctrlrange="-2.96705972839 2.96705972839" kp="5"></position>
     </actuator>
+
+    <sensor>
+        <jointpos name="A1_JP" joint="lwr_a1_joint"></jointpos>
+        <!--<jointpos name="A2_JP" joint="lwr_a2_joint"></jointpos>-->
+        <!--<jointpos name="A3_JP" joint="lwr_a3_joint"></jointpos>-->
+        <!--<jointpos name="A4_JP" joint="lwr_a4_joint"></jointpos>-->
+        <!--<jointpos name="A5_JP" joint="lwr_a5_joint"></jointpos>-->
+        <!--<jointpos name="A6_JP" joint="lwr_a6_joint"></jointpos>-->
+        <!--<jointpos name="E1_JP" joint="lwr_e1_joint"></jointpos>-->
+    </sensor>
 
     <worldbody>
         <geom name="floor0" pos="1 1 0" size="1 1 1" type="plane" condim="3" material="floor_mat"></geom>

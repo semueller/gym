@@ -10,7 +10,7 @@
                 <geom type="mesh" mesh="base_mesh" rgba="1 0.487 0 1" />
                 <body name="lwr_1_link" pos="0 0 0.11">
                     <inertial pos="0 -0.06 0.13" quat="0.707107 0.707107 0 0" mass="2.35" diaginertia="0.0160583 0.0139433 0.003525" />
-                    <joint name="lwr_a1_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-2.96706 2.96706" />
+                    <joint name="lwr_a1_joint" pos="0 0 0" axis="0 0 1" type="hinge" limited="true" range="-2.96706 2.96706" />
                     <geom size="0.07" rgba="1 0.487 0 1" />
                     <geom size="0.07" pos="0 0.06 0.2" rgba="1 0.487 0 1" />
                     <geom type="mesh"  mesh="link1_mesh" rgba="1 0.487 0 1" />
