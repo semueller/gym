@@ -62,6 +62,12 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         self.reward_type = reward_type
         self.ignore_z_target_rotation = ignore_z_target_rotation
         self.with_forces = False
+        self.num_forces = 16
+
+        self._fsensor_id2name = {}
+        self._fsensor_name2id = {}
+        self._fsensor_id2siteid = {}
+        self._site_id2intial_rgba = {}
 
         assert self.target_position in ['ignore', 'fixed', 'random']
         assert self.target_rotation in ['ignore', 'fixed', 'xyz', 'z', 'parallel']
@@ -259,10 +265,10 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         achieved_goal = self._get_achieved_goal().ravel()  # this contains the object position + rotation
 
         if self.with_forces:
-            forces = [1 if x > 0 else 0 for x in self.sim.data.sensordata[-16:]]
+            forces = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in self._fsensor_id2name.items()]
         else:
             forces = []
-        print(forces)
+
         observation = np.concatenate([robot_qpos, robot_qvel, forces, object_qvel, achieved_goal])
         return {
             'observation': observation.copy(),
@@ -273,8 +279,18 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
     def use_forces(self):
         print(
             'WARNING!!! This modified version of gym will include 16 force sensor values in the observation space!')
-        self.with_forces = True
 
+        # get touch sensor ids and their site names
+        for k, v in self.sim.model._sensor_id2name.items():
+            if 'TS' in v:
+                self._fsensor_id2name[k] = v
+                self._fsensor_name2id[v] = k
+                self._fsensor_id2siteid[k] = self.sim.model._site_name2id[v.replace('TS', 'T')]
+
+                # get intial rgba values
+                self._site_id2intial_rgba[self._fsensor_id2siteid[k]] = self.sim.model.site_rgba[self._fsensor_id2siteid[k]].copy()
+
+        self.with_forces = True
 
 class HandBlockEnv(ManipulateEnv):
     def __init__(self, target_position='random', target_rotation='xyz', reward_type='sparse'):

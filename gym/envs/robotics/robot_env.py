@@ -25,6 +25,7 @@ class RobotEnv(gym.GoalEnv):
         self.sim = mujoco_py.MjSim(model, nsubsteps=n_substeps)
         self.viewer = None
 
+
         self.metadata = {
             'render.modes': ['human', 'rgb_array'],
             'video.frames_per_second': int(np.round(1.0 / self.dt))
@@ -61,6 +62,16 @@ class RobotEnv(gym.GoalEnv):
         self._step_callback()
         obs = self._get_obs()
 
+        if self.with_forces:
+
+            for k, v in self._fsensor_id2name.items():
+                if self.sim.data.sensordata[k] != 0.0:
+                    self.sim.model.site_rgba[self._fsensor_id2siteid[k]] = self._site_id2intial_rgba[self._fsensor_id2siteid[k]].copy()
+                else:
+                    self.sim.model.site_rgba[self._fsensor_id2siteid[k]] = [0, 0, 0, 0]
+
+
+
         done = False
         info = {
             'is_success': self._is_success(obs['achieved_goal'], self.goal),
@@ -71,7 +82,7 @@ class RobotEnv(gym.GoalEnv):
     def reset(self):
         # Attempt to reset the simulator. Since we randomize initial conditions, it
         # is possible to get into a state with numerical issues (e.g. due to penetration or
-        # Gimbel lock) or we may not achieve an initial condition (e.g. an object is within the hand).
+        # Gimbal lock) or we may not achieve an initial condition (e.g. an object is within the hand).
         # In this case, we just keep randomizing until we eventually achieve a valid initial
         # configuration.
         did_reset_sim = False
