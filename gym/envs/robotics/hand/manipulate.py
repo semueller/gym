@@ -277,12 +277,13 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         object_qvel = self.sim.data.get_joint_qvel('object:joint')
         achieved_goal = self._get_achieved_goal().ravel()  # this contains the object position + rotation
 
-        if self.with_forces:
-            forces = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in self._fsensor_id2name.items()]
-        else:
-            forces = []
+        forces = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in self._fsensor_id2name.items()]
 
-        observation = np.concatenate([robot_qpos, robot_qvel, forces, object_qvel, achieved_goal])
+        if self.with_forces:
+            observation = np.concatenate([robot_qpos, robot_qvel, forces, object_qvel, achieved_goal])
+        else:
+            observation = np.concatenate([robot_qpos, robot_qvel, object_qvel, achieved_goal])
+
         return {
             'observation': observation.copy(),
             'achieved_goal': achieved_goal.copy(),
