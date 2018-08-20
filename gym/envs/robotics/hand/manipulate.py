@@ -319,6 +319,7 @@ class HandPenEnv(ManipulateEnv):
         super(HandPenEnv, self).__init__(
             model_path='hand/manipulate_pen.xml', target_position=target_position,
             target_rotation=target_rotation,
-            target_position_range=np.array([(-0.04, 0.04), (-0.06, 0.02), (0.0, 0.06)]),
+            # default was (-0.04, 0.04), (-0.06, 0.02), (0.0, 0.06)
+            target_position_range=np.array([(-0.02, 0.03), (-0.04, 0.04), (-0.02, 0.02)]),
             randomize_initial_rotation=False, reward_type=reward_type,
             ignore_z_target_rotation=True, distance_threshold=0.05)
