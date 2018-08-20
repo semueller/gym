@@ -62,15 +62,11 @@ class RobotEnv(gym.GoalEnv):
         self._step_callback()
         obs = self._get_obs()
 
-        if self.with_forces:
-
-            for k, v in self._fsensor_id2name.items():
-                if self.sim.data.sensordata[k] != 0.0:
-                    self.sim.model.site_rgba[self._fsensor_id2siteid[k]] = self._site_id2intial_rgba[self._fsensor_id2siteid[k]].copy()
-                else:
-                    self.sim.model.site_rgba[self._fsensor_id2siteid[k]] = [0, 0, 0, 0]
-
-
+        for k, v in self._fsensor_id2name.items():
+            if self.sim.data.sensordata[k] != 0.0:
+                self.sim.model.site_rgba[self._fsensor_id2siteid[k]] = self._site_id2intial_rgba[self._fsensor_id2siteid[k]].copy()
+            else:
+                self.sim.model.site_rgba[self._fsensor_id2siteid[k]] = [0, 0, 0, 0]
 
         done = False
         info = {

@@ -69,13 +69,26 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         self._fsensor_id2siteid = {}
         self._site_id2intial_rgba = {}
 
+
         assert self.target_position in ['ignore', 'fixed', 'random']
         assert self.target_rotation in ['ignore', 'fixed', 'xyz', 'z', 'parallel']
+
 
         hand_env.HandEnv.__init__(
             self, model_path, n_substeps=n_substeps, initial_qpos=initial_qpos,
             relative_control=relative_control)
         utils.EzPickle.__init__(self)
+
+        # get touch sensor ids and their site names
+        for k, v in self.sim.model._sensor_id2name.items():
+            if 'TS' in v:
+                self._fsensor_id2name[k] = v
+                self._fsensor_name2id[v] = k
+                self._fsensor_id2siteid[k] = self.sim.model._site_name2id[v.replace('TS', 'T')]
+
+                # get intial rgba values
+                self._site_id2intial_rgba[self._fsensor_id2siteid[k]] = self.sim.model.site_rgba[
+                    self._fsensor_id2siteid[k]].copy()
 
     def _get_achieved_goal(self):
         # Object position and rotation.
@@ -279,16 +292,6 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
     def use_forces(self):
         print(
             'WARNING!!! This modified version of gym will include 16 force sensor values in the observation space!')
-
-        # get touch sensor ids and their site names
-        for k, v in self.sim.model._sensor_id2name.items():
-            if 'TS' in v:
-                self._fsensor_id2name[k] = v
-                self._fsensor_name2id[v] = k
-                self._fsensor_id2siteid[k] = self.sim.model._site_name2id[v.replace('TS', 'T')]
-
-                # get intial rgba values
-                self._site_id2intial_rgba[self._fsensor_id2siteid[k]] = self.sim.model.site_rgba[self._fsensor_id2siteid[k]].copy()
 
         self.with_forces = True
 
