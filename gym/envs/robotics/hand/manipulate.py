@@ -66,15 +66,14 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         self.num_forces = 16
         self.forces = []
 
+        # force sensor mappings
         self._fsensor_id2name = {}
         self._fsensor_name2id = {}
         self._fsensor_id2siteid = {}
         self._site_id2intial_rgba = {}
 
-
         assert self.target_position in ['ignore', 'fixed', 'random']
         assert self.target_rotation in ['ignore', 'fixed', 'xyz', 'z', 'parallel']
-
 
         hand_env.HandEnv.__init__(
             self, model_path, n_substeps=n_substeps, initial_qpos=initial_qpos,
@@ -325,6 +324,12 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
             'WARNING!!! This modified version of gym will include 16 force sensor values in the observation space!')
 
         self.force_mode = mode
+
+    def set_object_factor(self, factor):
+
+        for name in ['object', 'object_hidden', 'target']:
+            id = self.sim.model._geom_name2id[name]
+            self.sim.model.geom_size[id] *= factor
 
 class HandBlockEnv(ManipulateEnv):
     def __init__(self, target_position='random', target_rotation='xyz', reward_type='sparse'):
