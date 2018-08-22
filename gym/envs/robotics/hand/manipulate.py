@@ -61,8 +61,10 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         self.rotation_threshold = rotation_threshold
         self.reward_type = reward_type
         self.ignore_z_target_rotation = ignore_z_target_rotation
-        self.with_forces = False
+        self.force_mode = None
+        self.force_max = 14
         self.num_forces = 16
+        self.forces = []
 
         self._fsensor_id2name = {}
         self._fsensor_name2id = {}
@@ -276,11 +278,39 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
         robot_qpos, robot_qvel = robot_get_obs(self.sim)
         object_qvel = self.sim.data.get_joint_qvel('object:joint')
         achieved_goal = self._get_achieved_goal().ravel()  # this contains the object position + rotation
+        self.forces = []
 
-        forces = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in self._fsensor_id2name.items()]
+        if self.force_mode == 'raw':
+            self.forces = [self.sim.data.sensordata[k] for k, v in self._fsensor_id2name.items()]
 
-        if self.with_forces:
-            observation = np.concatenate([robot_qpos, robot_qvel, forces, object_qvel, achieved_goal])
+        elif self.force_mode == 'normalized':
+            for k, v in self._fsensor_id2name.items():
+                f = self.sim.data.sensordata[k] / self.force_max
+
+                self.forces += [f if f < 1.0 else 1.0]
+
+        elif self.force_mode == 'thresholds':
+
+            for k, v in self._fsensor_id2name.items():
+                f = self.sim.data.sensordata[k] / self.force_max
+
+                if f > 0.75:
+                    self.forces += [1.0]
+                elif f > 0.5:
+                    self.forces += [0.75]
+                elif f > 0.25:
+                    self.forces += [0.5]
+                elif f > 0.01:
+                    self.forces += [0.25]
+                else:
+                    self.forces += [0.0]
+
+        else:
+            self.forces = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in self._fsensor_id2name.items()]
+
+
+        if self.force_mode is not None:
+            observation = np.concatenate([robot_qpos, robot_qvel, self.forces, object_qvel, achieved_goal])
         else:
             observation = np.concatenate([robot_qpos, robot_qvel, object_qvel, achieved_goal])
 
@@ -290,11 +320,11 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
             'desired_goal': self.goal.ravel().copy(),
         }
 
-    def use_forces(self):
+    def set_force_mode(self, mode):
         print(
             'WARNING!!! This modified version of gym will include 16 force sensor values in the observation space!')
 
-        self.with_forces = True
+        self.force_mode = mode
 
 class HandBlockEnv(ManipulateEnv):
     def __init__(self, target_position='random', target_rotation='xyz', reward_type='sparse'):
