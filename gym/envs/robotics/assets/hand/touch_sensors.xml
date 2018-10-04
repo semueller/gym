@@ -1,0 +1,35 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujoco>
+
+        <sensor>
+                <!--self defined touch sensors-->
+
+                <!--THUMB-->
+                <touch name="robot0:TS_thtip" site="robot0:T_thtip"></touch>
+                <touch name="robot0:TS_thmiddle" site="robot0:T_thmiddle"></touch>
+                <touch name="robot0:TS_thproximal" site="robot0:T_thproximal"></touch>
+
+                <!-- LEFT FINGER -->
+                <touch name="robot0:TS_lftip" site="robot0:T_lftip"></touch>
+                <touch name="robot0:TS_lfmiddle" site="robot0:T_lfmiddle"></touch>
+                <touch name="robot0:TS_lfproximal" site="robot0:T_lfproximal"></touch>
+
+                <!-- RIGHT FINGER -->
+                <touch name="robot0:TS_rftip" site="robot0:T_rftip"></touch>
+                <touch name="robot0:TS_rfmiddle" site="robot0:T_rfmiddle"></touch>
+                <touch name="robot0:TS_rfproximal" site="robot0:T_rfproximal"></touch>
+
+                <!-- MIDDLE FINGER -->
+                <touch name="robot0:TS_mftip" site="robot0:T_mftip"></touch>
+                <touch name="robot0:TS_mfmiddle" site="robot0:T_mfmiddle"></touch>
+                <touch name="robot0:TS_mfproximal" site="robot0:T_mfproximal"></touch>
+
+                <!-- FIFTH FINGER -->
+                <touch name="robot0:TS_fftip" site="robot0:T_fftip"></touch>
+                <touch name="robot0:TS_ffmiddle" site="robot0:T_ffmiddle"></touch>
+                <touch name="robot0:TS_ffproximal" site="robot0:T_ffproximal"></touch>
+
+                <!--PALM-->
+                <touch name="robot0:TS_palm" site="robot0:T_palm"></touch>
+        </sensor>
+</mujoco>
