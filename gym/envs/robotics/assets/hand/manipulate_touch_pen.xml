@@ -22,7 +22,7 @@
         <include file="robot_touch.xml"></include>
 
         <body name="object" pos="1 0.87 0.2" euler="-1 1 0">
-            <geom name="object" type="capsule" size="0.008 0.1" material="material:object" condim="4"></geom>
+            <geom name="object" type="capsule" size="0.008 0.1" material="material:object"  mass="1" condim="4"></geom>
             <site name="object:center" pos="0 0 0" rgba="1 0 0 0" size="0.01 0.01 0.01"></site>
             <site name="object:top" pos="0 0 0.1" rgba="1 0 0 1" size="0.0081"></site>
             <site name="object:bottom" pos="0 0 -0.1" rgba="0 1 0 1" size="0.0081"></site>

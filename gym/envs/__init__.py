@@ -429,12 +429,47 @@ for reward_type in ['sparse', 'dense']:
     )
 
     register(
-        id='HandTouchManipulatePen{}-v0'.format(suffix),
-        entry_point='gym.envs.robotics:HandTouchPenEnv',
+        id='HandSimpleTouchManipulatePen{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandSimpleTouchPenEnv',
         kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
         max_episode_steps=100,
     )
 
+    register(
+        id='HandSimpleTouchManipulateBlock{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandSimpleTouchBlockEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+
+    register(
+        id='HandSimpleTouchManipulateEgg{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandSimpleTouchEggEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+
+    register(
+        id='HandRichTouchManipulatePen{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandRichTouchPenEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+
+    register(
+        id='HandRichTouchManipulateBlock{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandRichTouchBlockEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+
+    register(
+        id='HandRichTouchManipulateEgg{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandRichTouchEggEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+    
 # Atari
 # ----------------------------------------
 

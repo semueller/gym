@@ -11,6 +11,10 @@ from gym.envs.robotics.hand.manipulate import HandBlockEnv
 from gym.envs.robotics.hand.manipulate import HandEggEnv
 from gym.envs.robotics.hand.manipulate import HandPenEnv
 
-from gym.envs.robotics.hand.manipulate_touch import HandTouchBlockEnv
-from gym.envs.robotics.hand.manipulate_touch import HandTouchEggEnv
-from gym.envs.robotics.hand.manipulate_touch import HandTouchPenEnv
+from gym.envs.robotics.hand.manipulate_simple_touch import HandSimpleTouchBlockEnv
+from gym.envs.robotics.hand.manipulate_simple_touch import HandSimpleTouchEggEnv
+from gym.envs.robotics.hand.manipulate_simple_touch import HandSimpleTouchPenEnv
+
+from gym.envs.robotics.hand.manipulate_rich_touch import HandRichTouchBlockEnv
+from gym.envs.robotics.hand.manipulate_rich_touch import HandRichTouchEggEnv
+from gym.envs.robotics.hand.manipulate_rich_touch import HandRichTouchPenEnv
