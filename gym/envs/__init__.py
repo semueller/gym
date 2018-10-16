@@ -421,6 +421,27 @@ for reward_type in ['sparse', 'dense']:
         max_episode_steps=100,
     )
 
+    register(
+        id='HandTouchSimpleManipulatePen{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandTouchSimplePenEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+
+    register(
+        id='HandTouchSimpleManipulateBlock{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandTouchSimpleBlockEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+
+    register(
+        id='HandTouchSimpleManipulateEgg{}-v0'.format(suffix),
+        entry_point='gym.envs.robotics:HandTouchSimpleEggEnv',
+        kwargs=_merge({'target_position': 'random', 'target_rotation': 'xyz'}, kwargs),
+        max_episode_steps=100,
+    )
+    
 # Atari
 # ----------------------------------------
 

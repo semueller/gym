@@ -8,3 +8,8 @@ from gym.envs.robotics.hand.reach import HandReachEnv
 from gym.envs.robotics.hand.manipulate import HandBlockEnv
 from gym.envs.robotics.hand.manipulate import HandEggEnv
 from gym.envs.robotics.hand.manipulate import HandPenEnv
+
+from gym.envs.robotics.hand.manipulate_touch_simple import HandTouchSimpleBlockEnv
+from gym.envs.robotics.hand.manipulate_touch_simple import HandTouchSimpleEggEnv
+from gym.envs.robotics.hand.manipulate_touch_simple import HandTouchSimplePenEnv
+
