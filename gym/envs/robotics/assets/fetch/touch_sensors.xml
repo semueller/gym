@@ -1,0 +1,11 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujoco>
+
+        <sensor>
+                <!--self defined touch sensors-->
+
+                <!--GRIPPER-->
+                <touch name="robot0:TS_lgripper" site="robot0:T_lgripper"></touch>
+                <touch name="robot0:TS_rgripper" site="robot0:T_rgripper"></touch>
+        </sensor>
+</mujoco>
