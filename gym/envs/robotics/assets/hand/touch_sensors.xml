@@ -1,0 +1,95 @@
+<!-- See LICENSE.md for legal notices. LICENSE.md must be kept together with this file. -->
+<mujoco>
+
+        <sensor>
+                <!--self defined touch sensors-->
+
+                <!--THUMB-->
+                <touch name="robot0:TS_thtip_tip" site="robot0:T_thtip_tip"></touch>
+                <touch name="robot0:TS_thtip_front" site="robot0:T_thtip_front"></touch>
+                <touch name="robot0:TS_thtip_back" site="robot0:T_thtip_back"></touch>
+                <touch name="robot0:TS_thtip_left" site="robot0:T_thtip_left"></touch>
+                <touch name="robot0:TS_thtip_right" site="robot0:T_thtip_right"></touch>
+
+                <touch name="robot0:TS_thmiddle_front" site="robot0:T_thmiddle_front"></touch>
+                <touch name="robot0:TS_thmiddle_back" site="robot0:T_thmiddle_back"></touch>
+                <touch name="robot0:TS_thmiddle_left" site="robot0:T_thmiddle_left"></touch>
+                <touch name="robot0:TS_thmiddle_right" site="robot0:T_thmiddle_right"></touch>
+
+                <touch name="robot0:TS_thproximal_front" site="robot0:T_thproximal_front"></touch>
+                <touch name="robot0:TS_thproximal_back" site="robot0:T_thproximal_back"></touch>
+                <touch name="robot0:TS_thproximal_left" site="robot0:T_thproximal_left"></touch>
+                <touch name="robot0:TS_thproximal_right" site="robot0:T_thproximal_right"></touch>
+
+                <!-- LEFT FINGER -->
+                <touch name="robot0:TS_lftip_tip" site="robot0:T_lftip_tip"></touch>
+                <touch name="robot0:TS_lftip_front" site="robot0:T_lftip_front"></touch>
+                <touch name="robot0:TS_lftip_back" site="robot0:T_lftip_back"></touch>
+                <touch name="robot0:TS_lftip_left" site="robot0:T_lftip_left"></touch>
+                <touch name="robot0:TS_lftip_right" site="robot0:T_lftip_right"></touch>
+
+                <touch name="robot0:TS_lfmiddle_front" site="robot0:T_lfmiddle_front"></touch>
+                <touch name="robot0:TS_lfmiddle_back" site="robot0:T_lfmiddle_back"></touch>
+                <touch name="robot0:TS_lfmiddle_left" site="robot0:T_lfmiddle_left"></touch>
+                <touch name="robot0:TS_lfmiddle_right" site="robot0:T_lfmiddle_right"></touch>
+
+                <touch name="robot0:TS_lfproximal_front" site="robot0:T_lfproximal_front"></touch>
+                <touch name="robot0:TS_lfproximal_back" site="robot0:T_lfproximal_back"></touch>
+                <touch name="robot0:TS_lfproximal_left" site="robot0:T_lfproximal_left"></touch>
+                <touch name="robot0:TS_lfproximal_right" site="robot0:T_lfproximal_right"></touch>
+
+                <!-- RIGHT FINGER -->
+                <touch name="robot0:TS_rftip_tip" site="robot0:T_rftip_tip"></touch>
+                <touch name="robot0:TS_rftip_front" site="robot0:T_rftip_front"></touch>
+                <touch name="robot0:TS_rftip_back" site="robot0:T_rftip_back"></touch>
+                <touch name="robot0:TS_rftip_left" site="robot0:T_rftip_left"></touch>
+                <touch name="robot0:TS_rftip_right" site="robot0:T_rftip_right"></touch>
+
+                <touch name="robot0:TS_rfmiddle_front" site="robot0:T_rfmiddle_front"></touch>
+                <touch name="robot0:TS_rfmiddle_back" site="robot0:T_rfmiddle_back"></touch>
+                <touch name="robot0:TS_rfmiddle_left" site="robot0:T_rfmiddle_left"></touch>
+                <touch name="robot0:TS_rfmiddle_right" site="robot0:T_rfmiddle_right"></touch>
+
+                <touch name="robot0:TS_rfproximal_front" site="robot0:T_rfproximal_front"></touch>
+                <touch name="robot0:TS_rfproximal_back" site="robot0:T_rfproximal_back"></touch>
+                <touch name="robot0:TS_rfproximal_left" site="robot0:T_rfproximal_left"></touch>
+                <touch name="robot0:TS_rfproximal_right" site="robot0:T_rfproximal_right"></touch>
+
+                <!-- MIDDLE FINGER -->
+                <touch name="robot0:TS_mftip_tip" site="robot0:T_mftip_tip"></touch>
+                <touch name="robot0:TS_mftip_front" site="robot0:T_mftip_front"></touch>
+                <touch name="robot0:TS_mftip_back" site="robot0:T_mftip_back"></touch>
+                <touch name="robot0:TS_mftip_left" site="robot0:T_mftip_left"></touch>
+                <touch name="robot0:TS_mftip_right" site="robot0:T_mftip_right"></touch>
+
+                <touch name="robot0:TS_mfmiddle_front" site="robot0:T_mfmiddle_front"></touch>
+                <touch name="robot0:TS_mfmiddle_back" site="robot0:T_mfmiddle_back"></touch>
+                <touch name="robot0:TS_mfmiddle_left" site="robot0:T_mfmiddle_left"></touch>
+                <touch name="robot0:TS_mfmiddle_right" site="robot0:T_mfmiddle_right"></touch>
+
+                <touch name="robot0:TS_mfproximal_front" site="robot0:T_mfproximal_front"></touch>
+                <touch name="robot0:TS_mfproximal_back" site="robot0:T_mfproximal_back"></touch>
+                <touch name="robot0:TS_mfproximal_left" site="robot0:T_mfproximal_left"></touch>
+                <touch name="robot0:TS_mfproximal_right" site="robot0:T_mfproximal_right"></touch>
+
+                 <!--FIFTH FINGER-->
+                <touch name="robot0:TS_fftip_tip" site="robot0:T_fftip_tip"></touch>
+                <touch name="robot0:TS_fftip_front" site="robot0:T_fftip_front"></touch>
+                <touch name="robot0:TS_fftip_back" site="robot0:T_fftip_back"></touch>
+                <touch name="robot0:TS_fftip_left" site="robot0:T_fftip_left"></touch>
+                <touch name="robot0:TS_fftip_right" site="robot0:T_fftip_right"></touch>
+
+                <touch name="robot0:TS_ffmiddle_front" site="robot0:T_ffmiddle_front"></touch>
+                <touch name="robot0:TS_ffmiddle_back" site="robot0:T_ffmiddle_back"></touch>
+                <touch name="robot0:TS_ffmiddle_left" site="robot0:T_ffmiddle_left"></touch>
+                <touch name="robot0:TS_ffmiddle_right" site="robot0:T_ffmiddle_right"></touch>
+
+                <touch name="robot0:TS_ffproximal_front" site="robot0:T_ffproximal_front"></touch>
+                <touch name="robot0:TS_ffproximal_back" site="robot0:T_ffproximal_back"></touch>
+                <touch name="robot0:TS_ffproximal_left" site="robot0:T_ffproximal_left"></touch>
+                <touch name="robot0:TS_ffproximal_right" site="robot0:T_ffproximal_right"></touch>
+
+                <!--PALM-->
+                <touch name="robot0:TS_palm" site="robot0:T_palm"></touch>
+        </sensor>
+</mujoco>
