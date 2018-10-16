@@ -32,6 +32,7 @@ class FetchTouchEnv(fetch_env.FetchEnv):
             touch_visualisation (string): how touch sensor sites are visualised. default is no visualisation
                 - always: always show sensor sites
                 - on_touch: only show sensor sites with readings > 0
+                - never: never shows sensors regeardless of their measurements
         """
 
 
@@ -89,30 +90,30 @@ class FetchTouchEnv(fetch_env.FetchEnv):
         else:
             achieved_goal = np.squeeze(object_pos.copy())
 
-            # get touch sensor readings based on chosen reading type
-            if self.touch_mode == 'raw':
-                touch_values = [self.sim.data.sensordata[k] for k, v in self._tsensor_id2name.items()]
+        # get touch sensor readings based on chosen reading type
+        if self.touch_mode == 'raw':
+            touch_values = [self.sim.data.sensordata[k] for k, v in self._tsensor_id2name.items()]
 
-            else:
-                touch_values = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in
-                                self._tsensor_id2name.items()]
+        else:
+            touch_values = [1 if self.sim.data.sensordata[k] != 0.0 else 0 for k, v in
+                            self._tsensor_id2name.items()]
 
-            # set rgba values
-            if self.touch_visualisation == 'always':
-                for k, v in self._tsensor_id2name.items():
+        # set rgba values
+        if self.touch_visualisation == 'always':
+            for k, v in self._tsensor_id2name.items():
+                self.sim.model.site_rgba[self._tsensor_id2siteid[k]] = self._site_id2intial_rgba[
+                    self._tsensor_id2siteid[k]].copy()
+
+        elif self.touch_visualisation == 'on_touch':
+            for k, v in self._tsensor_id2name.items():
+                if self.sim.data.sensordata[k] != 0.0:
                     self.sim.model.site_rgba[self._tsensor_id2siteid[k]] = self._site_id2intial_rgba[
                         self._tsensor_id2siteid[k]].copy()
-
-            elif self.touch_visualisation == 'on_touch':
-                for k, v in self._tsensor_id2name.items():
-                    if self.sim.data.sensordata[k] != 0.0:
-                        self.sim.model.site_rgba[self._tsensor_id2siteid[k]] = self._site_id2intial_rgba[
-                            self._tsensor_id2siteid[k]].copy()
-                    else:
-                        self.sim.model.site_rgba[self._tsensor_id2siteid[k]] = [0, 0, 0, 0]
-            else:
-                for k, v in self._tsensor_id2name.items():
+                else:
                     self.sim.model.site_rgba[self._tsensor_id2siteid[k]] = [0, 0, 0, 0]
+        else:
+            for k, v in self._tsensor_id2name.items():
+                self.sim.model.site_rgba[self._tsensor_id2siteid[k]] = [0, 0, 0, 0]
 
 
         obs = np.concatenate([
