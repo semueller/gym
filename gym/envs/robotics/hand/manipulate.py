@@ -263,6 +263,13 @@ class ManipulateEnv(hand_env.HandEnv, utils.EzPickle):
             'desired_goal': self.goal.ravel().copy(),
         }
 
+    def set_object_factor(self, factor):
+
+        for name in ['object', 'object_hidden', 'target']:
+            id = self.sim.model._geom_name2id[name]
+
+        self.sim.model.geom_size[id] *= factor
+
 
 class HandBlockEnv(ManipulateEnv):
     def __init__(self, target_position='random', target_rotation='xyz', reward_type='sparse'):
