@@ -4,6 +4,7 @@ import gym
 from gym import error, spaces
 from gym import utils
 from gym.utils import seeding
+from PIL import Image
 
 try:
     import atari_py
@@ -52,6 +53,10 @@ class AtariEnv(gym.Env, utils.EzPickle):
         else:
             raise error.Error('Unrecognized observation type: {}'.format(self._obs_type))
 
+        self.store_frames = False
+        self.image_path = '/home/llach/.keras/datasets/atari/breakout/'
+        self.framecount = 0
+
     def seed(self, seed=None):
         self.np_random, seed1 = seeding.np_random(seed)
         # Derive a random seed. This gets passed as a uint, but gets
@@ -74,6 +79,11 @@ class AtariEnv(gym.Env, utils.EzPickle):
         for _ in range(num_steps):
             reward += self.ale.act(action)
         ob = self._get_obs()
+
+        if self.store_frames:
+            im = Image.fromarray(ob)
+            im.save(self.image_path + '{}.jpg'.format(self.framecount), "JPEG")
+            self.framecount += 1
 
         return ob, reward, self.ale.game_over(), {"ale.lives": self.ale.lives()}
 
@@ -169,6 +179,9 @@ class AtariEnv(gym.Env, utils.EzPickle):
         state_ref = self.ale.decodeState(state)
         self.ale.restoreSystemState(state_ref)
         self.ale.deleteState(state_ref)
+
+    def _set_store_frames(self):
+        self.store_frames = True
 
 ACTION_MEANING = {
     0 : "NOOP",
